@@ -17,48 +17,36 @@ class InstallSchema implements InstallSchemaInterface
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-		$installer = $setup;
-		$installer->startSetup();
+        $installer = $setup;
+        $installer->startSetup();
 
-		/**
-		 * Creating table vky_test
-		 */
-		$table = $installer->getConnection()->newTable(
-			$installer->getTable('vky_test')
-		)->addColumn(
-			'test_id',
-			\Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-			null,
-			['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
-			'Entity Id'
-		)->addColumn(
-			'title',
-			\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-			255,
-			['nullable' => true],
-			'Title'
-		)->addColumn(
-			'author',
-			\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-			255,
-			['nullable' => true,'default' => null],
-			'Author'
-		)->addColumn(
-			'content',
-			\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-			'2M',
-			['nullable' => true,'default' => null],
-			'Content'
-		)->addColumn(
-			'created_at',
-			\Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-			null,
-			['nullable' => false],
-			'Created At'
-		)->setComment(
-            'Vky Test Table'
+        /**
+         * Creating table vky_test
+         */
+        $table = $installer->getConnection()->newTable(
+            $installer->getTable('customer_details')
+        )->addColumn(
+            'cust_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+            'Cust Id'
+        )->addColumn(
+            'name',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            ['nullable' => true],
+            'Name'
+        )->addColumn(
+            'contact',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            ['nullable' => true,'default' => null],
+            'Contact'
+        )->setComment(
+            'Customer Details Table'
         );
-		$installer->getConnection()->createTable($table);
-		$installer->endSetup();
-	}
+        $installer->getConnection()->createTable($table);
+        $installer->endSetup();
+    }
 }

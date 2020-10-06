@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Vky_Test::manager" title="Grid Manager" 
+        module="Vky_Test" sortOrder="10" resource="Vky_Test::manager"/>
+    	<add id="Vky_Test::add_row" title="Grid Manager" 
+        module="Vky_Test" sortOrder="20" parent="Vky_Test::manager" action="grid/test" resource="Vky_Test::add_row"/>
+    </menu>
+</config>
